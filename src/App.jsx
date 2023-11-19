@@ -1,33 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Box, Container, Flex } from '@chakra-ui/react'
+import './App.css';
+import { useMediaQuery } from '@chakra-ui/react'
+import Footer from './components/general/Footer'
+import NavBar from './components/general/NavBar';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
+import ShowsPage from './pages/ShowsPage';
+import MoviesPage from './pages/MoviesPage';
+import MoviePage from './pages/MoviePage';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [isHorizontalNavbar] = useMediaQuery('(max-width: 1280px)');//variable to dynamically change navbar position
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Flex minW={'100%'} minH={'calc(100% - 100px)'} flexDirection={isHorizontalNavbar? 'column':'row'}>
+        {!isHorizontalNavbar && <NavBar isHorizontalNavbar={isHorizontalNavbar}/>}
+        {!isHorizontalNavbar && <Box w={'100px'} h={'100%'} />}
+        <Container minW={isHorizontalNavbar? "100%": 'calc(100% - 100px)'} w={'100%'} minH={'100%'} m={0} p={0} position={'relative'}>
+          <Routes>
+            <Route index="/" element={<HomePage />} />
+            <Route path='home' element={<HomePage />} />
+            <Route path='search' element={<SearchPage />} />
+            <Route path='movies' element={<MoviesPage />} />
+            <Route path='movies/:movieId' element={<MoviePage />} />
+            <Route path='shows' element={<ShowsPage />} />
+          </Routes>
+           <Box w={'100%'} h={'100px'} /> {/*this box is to prevent footer from overlapping elements */}
+          <Container 
+            position={'absolute'}
+            bottom={0}
+            m={0} p={0}
+          >
+            <Footer isHorizontalNavbar={isHorizontalNavbar}/>
+          </Container>
+        </Container>
+      </Flex>
+      {isHorizontalNavbar && <Box minW={'full'} minH={'100px'}/>}  {/*this box is to prevent NavBar from overlapping elements */}
+      {isHorizontalNavbar && <NavBar isHorizontalNavbar={isHorizontalNavbar}/>}
     </>
   )
 }
