@@ -2,11 +2,10 @@ import { Button, Flex, Text } from "@chakra-ui/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useNavigate } from "react-router-dom";
-import VerticalCard from "../general/VerticalCard.jsx";
+import VerticalShowCard from "../card/VerticalShowCard.jsx";
 import { useEffect, useRef, useState } from "react";
-// import { useEffect, useState } from "react";
 
-const Section = ({ cards, title, exploreLink}) => {
+const ShowSection = ({ cards, title, exploreLink}) => {
 
     const carouselContainerRef = useRef(); 
     const [dynamicWidth, setDynamicWidth] = useState(null);
@@ -24,18 +23,18 @@ const Section = ({ cards, title, exploreLink}) => {
     return () => window.removeEventListener("resize", setSizer);
     }, [dynamicWidth])
     const responsive ={
-          desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: dynamicWidth/210
-          },
-          tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: dynamicWidth/210
-          },
-          mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: dynamicWidth/210
-          }
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: dynamicWidth/210
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: dynamicWidth/157
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: dynamicWidth/110
+        }
       };
 
   return (
@@ -60,11 +59,11 @@ const Section = ({ cards, title, exploreLink}) => {
             containerClass="carousel-container"
             responsive={responsive}
         >
-            {cards.map((card, index) => <VerticalCard key={index} card={card} />)}
-            <VerticalCard exploremore={exploreLink} />
+            {cards.map((card, index) => <VerticalShowCard key={index} card={card} />)}
+            <VerticalShowCard exploremore={exploreLink} />
         </Carousel>
     </Flex>
   )
 }
 
-export default Section
+export default ShowSection

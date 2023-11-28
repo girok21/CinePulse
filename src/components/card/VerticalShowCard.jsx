@@ -1,13 +1,13 @@
 import { Card, Flex, Image, Text } from "@chakra-ui/react";
 import VerticalCardReview from '../review/VerticalCardReview';
 
-const VerticalCard = ({card, exploremore}) => {
+const VerticalShowCard = ({card, exploremore}) => {
     if(exploremore){
         return (
             <Card
                 className="vertical-card-container"
-                w={'200px'}
-                h={'365px'}
+                w={{base: '105px', md: '150px',  lg: '200px'}}
+                h={{base: '192px', md: '274px',  lg: '365px'}}
                 bg={'#000000'}
                 position={'relative'}
                 >
@@ -31,8 +31,8 @@ const VerticalCard = ({card, exploremore}) => {
   return (
         <Card
             className="vertical-card-container"
-            w={'200px'}
-            h={'365px'}
+            w={{base: '105px', md: '150px',  lg: '200px'}}
+            h={{base: '192px', md: '274px',  lg: '365px'}}
             overflow={'hidden'}
             bg={'#000000'}
         >
@@ -40,7 +40,7 @@ const VerticalCard = ({card, exploremore}) => {
                 w={'100%'}
                 h={'100%'}
             >
-                <Image src={card.image} />
+                <Image src={card.poster_path} />
             </Flex>
             <Flex flexDir={'column'}
                 pl={2}
@@ -48,13 +48,13 @@ const VerticalCard = ({card, exploremore}) => {
             >
                 <Flex flexDirection={'column'} gap={1}>
                     <Text fontWeight={'lighter'}>
-                        {card.title}
+                        {card.original_title}
                     </Text>
-                    <VerticalCardReview rating={card.rating} />
+                    <VerticalCardReview rating={card.vote_average/2} />
                 </Flex>
             </Flex>
         </Card>
     )
 }
 
-export default VerticalCard
+export default VerticalShowCard

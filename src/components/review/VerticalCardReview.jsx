@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react"
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
-const HeroCardReview = ({rating}) => {
+const VerticalCardReview = ({rating}) => {
   return (
     <>
     <Flex flexDir={'row'} alignItems={'center'}>
@@ -13,4 +13,4 @@ const HeroCardReview = ({rating}) => {
   )
 }
 
-export default HeroCardReview;
+export default VerticalCardReview;
