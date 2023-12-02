@@ -1,3 +1,7 @@
+body {
+    overflow-y: scroll; /* Always show vertical scrollbar */
+  }
+
 #root{
     max-width: 100%;
     min-height: 100vh;

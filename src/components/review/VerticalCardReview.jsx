@@ -2,6 +2,9 @@ import { Flex } from "@chakra-ui/react"
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 const VerticalCardReview = ({rating}) => {
+  if(!rating){
+    rating = 0;
+  }
   return (
     <>
     <Flex flexDir={'row'} alignItems={'center'}>

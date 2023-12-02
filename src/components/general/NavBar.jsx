@@ -1,6 +1,9 @@
 import { Box, Flex } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = ({ isHorizontalNavbar }) => {
+  const navigate = useNavigate();
+
   return (
     <>
     <Flex 
@@ -17,16 +20,16 @@ const NavBar = ({ isHorizontalNavbar }) => {
         bottom={isHorizontalNavbar? '0': ''}
         left={isHorizontalNavbar? '': '0'}
     >
-        <Box className='navbar-icon'>
+        <Box className='navbar-icon' onClick={()=>{navigate('/home')}}>
             <HomeSvg width={'45px'}/>
         </Box>
-        <Box className='navbar-icon'>
+        <Box className='navbar-icon' onClick={()=>{navigate('/search')}}>
             <SearchSVG width={'45px'}/>
         </Box>
-        <Box className='navbar-icon'>
+        <Box className='navbar-icon' onClick={()=>{navigate('/movies')}}>
             <MovieSVG width={'45px'}/>
         </Box>
-        <Box className='navbar-icon'>
+        <Box className='navbar-icon' onClick={()=>{navigate('/shows')}}>
             <TVSVG width={'45px'}/>
         </Box>
         <Box className='navbar-icon'>

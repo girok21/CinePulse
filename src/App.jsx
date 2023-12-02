@@ -9,6 +9,7 @@ import SearchPage from './pages/SearchPage';
 import ShowsPage from './pages/ShowsPage';
 import MoviesPage from './pages/MoviesPage';
 import MoviePage from './pages/MoviePage';
+import ScrollToTop from './components/general/ScrollToTop';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         {!isHorizontalNavbar && <NavBar isHorizontalNavbar={isHorizontalNavbar}/>}
         {!isHorizontalNavbar && <Box w={'100px'} h={'100%'} />}
         <Container minW={isHorizontalNavbar? "100%": 'calc(100% - 100px)'} w={'100%'} minH={'100%'} m={0} p={0} position={'relative'}>
+          <ScrollToTop />
           <Routes>
             <Route index="/" element={<HomePage />} />
             <Route path='home' element={<HomePage />} />

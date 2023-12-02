@@ -1,25 +1,26 @@
 import { Flex } from "@chakra-ui/react"
 import ShowSection from "../components/carousel/ShowSection"
-import HeroBanner from "../components/card/HeroBanner"
+import HeroBanner from "../components/general/HeroBanner"
+import { useGetTrendingMoviesQuery } from "../slices/movieApiSlice"
+import { useGetTrendingTvShowQuery } from "../slices/tvApiSlice"
 
 const HomePage = () => {
     //for testing purpose demo data
-    const exploreLink = "https://htmldog.com/references/css/properties/font-weight/"
-    const card = {
-        original_title : "Oppenheimer",
-        vote_average: 7,
-        poster_path: '/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg'
-    }
-    const title = "Movies Now Playing"
-    const cards = [...Array(10).keys()].map(()=> card)
+    const {data: trendingMovies, loading: istrendingmoviesLoading, error: trendingMoviesError} = useGetTrendingMoviesQuery(1);
+    const {data: trendingTvShows, loading: istrendingTvShowsLoading, error: trendingTvShowsError} = useGetTrendingTvShowQuery(1);
   return (
         <>
             <HeroBanner />
             <Flex w={'100%'} 
                 p={10}
                 pr={0}    
+                flexDirection={'column'}
+                gap={{base: 2, md: 3, lg: 4}}   
             > {/* To contain carousel sections in Home Page */}
-                <ShowSection cards={cards} title={title} exploreLink={exploreLink}/>
+                {!istrendingmoviesLoading &&  trendingMovies && 
+                    <ShowSection cards={trendingMovies.results} title={"Trending Movies"} exploreLink={"/sdfd"}/>}
+                {!istrendingTvShowsLoading &&  trendingTvShows && 
+                    <ShowSection cards={trendingTvShows.results} title={"Trending Shows"} exploreLink={"/sdfd"}/>}
             </Flex>
         </>
     )

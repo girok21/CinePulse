@@ -1,19 +1,22 @@
 import { Flex, Text } from "@chakra-ui/react"
-import HeroBanner from "../components/card/HeroBanner"
-import { useState } from "react"
+import HeroBanner from "../components/general/HeroBanner"
+import { useEffect, useState } from "react"
 import Overview from "../components/section/Overview"
 import Videos from "../components/section/Videos"
 import SimilarShowSection from "../components/carousel/SimilarShowSection";
-import CastSection from '../components/carousel/CastSection'
+import CastSection from '../components/carousel/CastSection';
+import { useGetNowPlayingMoviesQuery } from "../slices/movieApiSlice"
 
 const MoviePage = () => {
 
     const [activeSection, setActiveSection] = useState('overview')// to determine which section to be displayed - overview/videos/photos
 
+    
     const handleSectionClick = (header)=>{
         if(header === activeSection) return;
         setActiveSection(header);
     }
+    
 
   return (
     <Flex

@@ -1,5 +1,6 @@
 import { Card, Flex, Image, Text } from "@chakra-ui/react";
 import VerticalCardReview from '../review/VerticalCardReview';
+import { POSTER_IMAGE_URL } from "../../constants";
 
 const VerticalShowCard = ({card, exploremore}) => {
     if(exploremore){
@@ -40,17 +41,17 @@ const VerticalShowCard = ({card, exploremore}) => {
                 w={'100%'}
                 h={'100%'}
             >
-                <Image src={card.poster_path} />
+                <Image src={`${POSTER_IMAGE_URL}/${card?.poster_path}`} />
             </Flex>
             <Flex flexDir={'column'}
                 pl={2}
                 pb={5}
             >
                 <Flex flexDirection={'column'} gap={1}>
-                    <Text fontWeight={'lighter'}>
-                        {card.original_title}
+                    <Text fontWeight={'lighter'} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+                        {card?.original_title || card?.original_name}
                     </Text>
-                    <VerticalCardReview rating={card.vote_average/2} />
+                    <VerticalCardReview rating={card?.vote_average/2} />
                 </Flex>
             </Flex>
         </Card>

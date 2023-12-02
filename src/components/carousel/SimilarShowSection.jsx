@@ -5,7 +5,6 @@ import VerticalShowCard from "../card/VerticalShowCard.jsx";
 import { useEffect, useRef, useState } from "react";
 
 const SimilarShowSection = ({ movieId }) => {
-    console.log(movieId)
     const cards = [
       {
         "adult": false,

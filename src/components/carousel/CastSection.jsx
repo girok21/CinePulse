@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 
 const CastSection = ({ showId }) => {
   
-    console.log(showId);
     const cards = [
       {
         "adult": false,
