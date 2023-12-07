@@ -32,7 +32,7 @@ export const tvApiSlice = apiSlice.injectEndpoints({
                 url: `${TRENDING_URL}/tv/week?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
             }),
             keepUnusedDataFor: 5
-        })
+        }),
     })
 });
 
@@ -41,5 +41,5 @@ export const {
     useGetOnTheAirShowsQuery,
     useGetPopularShowsQuery,
     useGetTopRatedShowsQuery,
-    useGetTrendingTvShowQuery
+    useGetTrendingTvShowQuery,
 } = tvApiSlice;

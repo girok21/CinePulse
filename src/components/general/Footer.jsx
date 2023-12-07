@@ -1,11 +1,11 @@
-import { Box, Flex, Text } from "@chakra-ui/react"
+import { Box, Flex, Image, Text } from "@chakra-ui/react"
 import TMDBLogo from '../../assets/TMDBLogo.jsx'
 
 const Footer = () => {
 
   return (
     <>
-    <Flex flexDirection={'row'} p={3}>
+    <Flex flexDirection={'row'} p={3} w={'100%'}>
         <Flex flexDirection={'column'} gap={1}>
             <Text fontSize={'13px'}>
                 Copyright © 2023 - All rights reserved.
@@ -20,13 +20,17 @@ const Footer = () => {
                     </a>
                 </Flex>
                 <Box w={'2px'} h={'full'} bg={'gray.300'} />
-                <Flex flexDirection={'column'} gap={1} pb={2} justifyContent={'center'}>
+                <Flex flexDirection={'column'} pb={2} justifyContent={'center'}>
                     <Text fontSize={'13px'}>
                         Made with ❤ -
                         <a href="https://github.com/girok21" target="blank" height={'fit-content'}>
                             {` @girok21`}
                         </a>
                     </Text>
+                    <Image 
+                        src="/golden-logo-large.svg"
+                        h={{ base:'18px'}}
+                    />
                 </Flex>
             </Flex>
         </Flex>

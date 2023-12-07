@@ -1,7 +1,12 @@
 import { Card, Flex, Image, Text } from "@chakra-ui/react";
-import { POSTER_IMAGE_URL } from "../../constants";
+import { WIDTH342_IMAGE_URL } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 const VerticalPersonCard = ({card}) => {
+    const navigate = useNavigate();
+    const handleCardClick = ()=>{
+        navigate(`/persons/${card.id}`)
+    }
   return (
         <Card
             className="vertical-card-container"
@@ -9,12 +14,13 @@ const VerticalPersonCard = ({card}) => {
             h={{base: '192px', md: '274px',  lg: '365px'}}
             overflow={'hidden'}
             bg={'#000000'}
+            onClick={handleCardClick}
         >
             <Flex
                 w={'100%'}
                 h={'100%'}
             >
-                <Image src={`${POSTER_IMAGE_URL}/${card?.profile_path}`}/>
+                <Image src={`${WIDTH342_IMAGE_URL}/${card?.profile_path}`}/>
             </Flex>
             <Flex flexDir={'column'}
                 pl={2}

@@ -1,5 +1,5 @@
 body {
-    overflow-y: scroll; /* Always show vertical scrollbar */
+    scrollbar-gutter: stable; /* Always show vertical scrollbar */
   }
 
 #root{
@@ -57,4 +57,16 @@ body {
 .carousel-item{
     padding: 10px;
     
+}
+
+.image-grid-container{
+    /* Grid Fallback */
+    display: flex;
+    flex-wrap: wrap;
+    
+    /* Supports Grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: minmax(auto, auto);
+    grid-gap: 1em;
 }

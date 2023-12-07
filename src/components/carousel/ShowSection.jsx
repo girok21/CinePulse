@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import VerticalShowCard from "../card/VerticalShowCard.jsx";
 import { useEffect, useRef, useState } from "react";
 
-const ShowSection = ({ cards, title, exploreLink}) => {
-
+const ShowSection = ({ cards, title, media_type, exploreLink}) => {
     const carouselContainerRef = useRef(); 
     const [dynamicWidth, setDynamicWidth] = useState(null);
     const navigate = useNavigate();
@@ -25,15 +24,18 @@ const ShowSection = ({ cards, title, exploreLink}) => {
     const responsive ={
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: dynamicWidth/210
+          items: dynamicWidth/210,
+          slidesToSlide: Math.floor(dynamicWidth/210)
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: dynamicWidth/157
+          items: dynamicWidth/157,
+          slidesToSlide: Math.floor(dynamicWidth/210)
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
-          items: dynamicWidth/110
+          items: dynamicWidth/110,
+          slidesToSlide: Math.floor(dynamicWidth/210)
         }
       };
 
@@ -59,7 +61,7 @@ const ShowSection = ({ cards, title, exploreLink}) => {
             containerClass="carousel-container"
             responsive={responsive}
         >
-            {cards.map((card, index) => <VerticalShowCard key={index} card={card} />)}
+            {cards.map((card, index) => <VerticalShowCard key={index} media_type={media_type} card={card} />)}
             <VerticalShowCard exploremore={exploreLink} />
         </Carousel>
     </Flex>

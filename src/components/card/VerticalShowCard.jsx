@@ -1,8 +1,17 @@
 import { Card, Flex, Image, Text } from "@chakra-ui/react";
 import VerticalCardReview from '../review/VerticalCardReview';
-import { POSTER_IMAGE_URL } from "../../constants";
+import { WIDTH342_IMAGE_URL } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
-const VerticalShowCard = ({card, exploremore}) => {
+const VerticalShowCard = ({card, media_type, exploremore}) => {
+    const navigate = useNavigate();
+    const handleCardClick = ()=>{
+        if(card.media_type === "movie" || media_type === "movie"){
+            navigate(`/movies/${card.id}`)
+        }else{
+            navigate(`/shows/${card.id}`)
+        }
+    }
     if(exploremore){
         return (
             <Card
@@ -11,6 +20,7 @@ const VerticalShowCard = ({card, exploremore}) => {
                 h={{base: '192px', md: '274px',  lg: '365px'}}
                 bg={'#000000'}
                 position={'relative'}
+                onClick={()=>{navigate(exploremore)}}
                 >
                 <Text
                     w={'fit-content'}
@@ -36,12 +46,13 @@ const VerticalShowCard = ({card, exploremore}) => {
             h={{base: '192px', md: '274px',  lg: '365px'}}
             overflow={'hidden'}
             bg={'#000000'}
+            onClick={handleCardClick}
         >
             <Flex
                 w={'100%'}
                 h={'100%'}
             >
-                <Image src={`${POSTER_IMAGE_URL}/${card?.poster_path}`} />
+                <Image src={`${WIDTH342_IMAGE_URL}/${card?.poster_path}`} fallbackSrc="/fallback-vertical.jpg"/>
             </Flex>
             <Flex flexDir={'column'}
                 pl={2}

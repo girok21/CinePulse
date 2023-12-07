@@ -19,6 +19,7 @@ const NavBar = ({ isHorizontalNavbar }) => {
         position={'fixed'}
         bottom={isHorizontalNavbar? '0': ''}
         left={isHorizontalNavbar? '': '0'}
+        zIndex={1001}
     >
         <Box className='navbar-icon' onClick={()=>{navigate('/home')}}>
             <HomeSvg width={'45px'}/>

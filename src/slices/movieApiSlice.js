@@ -28,11 +28,11 @@ export const movieApiSlice = apiSlice.injectEndpoints({
             keepUnusedDataFor: 5
         }),
         getTrendingMovies: builder.query({
-            query: () => ({
-                url: `${TRENDING_URL}/movie/week?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
+            query: (page) => ({
+                url: `${TRENDING_URL}/movie/week?page=${page}&api_key=${import.meta.env.VITE_TMDB_API_KEY}`
             }),
             keepUnusedDataFor: 5
-        })
+        }),
     })
 });
 
@@ -41,5 +41,5 @@ export const {
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
     useGetUpcomingMoviesQuery,
-    useGetTrendingMoviesQuery
+    useGetTrendingMoviesQuery,
 } = movieApiSlice;

@@ -47,7 +47,7 @@ const SearchPage = () => {
         <InputLeftElement pointerEvents='none'>
           <SearchSvg />
         </InputLeftElement>
-        <Input type='tel' placeholder='Search for a movie, show or person...' onChange={onSearchStringChange}/>
+        <Input type='text' placeholder='Search for a movie, show or person...' onChange={onSearchStringChange}/>
       </InputGroup>
       {!isloading && data && searchString.length > 0 &&
         <Flex w={{base:'95%', md: '90%', lg:'85%'}} flexDir={'column'} gap={1}>
