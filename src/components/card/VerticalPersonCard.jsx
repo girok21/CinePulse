@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 const VerticalPersonCard = ({card}) => {
     const navigate = useNavigate();
-    const handleCardClick = ()=>{
-        navigate(`/persons/${card.id}`)
-    }
+    // const handleCardClick = ()=>{
+    //     navigate(`/persons/${card.id}`)
+    // }
   return (
         <Card
             className="vertical-card-container"
@@ -14,7 +14,6 @@ const VerticalPersonCard = ({card}) => {
             h={{base: '192px', md: '274px',  lg: '365px'}}
             overflow={'hidden'}
             bg={'#000000'}
-            onClick={handleCardClick}
         >
             <Flex
                 w={'100%'}

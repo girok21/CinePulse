@@ -7,6 +7,7 @@ import { useGetTrendingTvShowQuery } from "../slices/tvApiSlice"
 import { useEffect, useState } from "react";
 import useRandomShow from "../hooks/useRandomShow"
 import { useGetFindShowByIdQuery } from "../slices/commonApiSlice"
+import FullScreenLoader from "../components/loader/FullScreenLoader"
 
 const HomePage = () => {
     //for testing purpose demo data
@@ -33,6 +34,12 @@ const HomePage = () => {
             getRandomShow();
         }
     }, [randomShow, getRandomShow]);
+    if(istrendingTvShowsLoading || istrendingmoviesLoading || isherobannerShowLoading){
+        console.log('inside')
+        return (
+            <FullScreenLoader />
+        )
+    }
 return (
         <>
             {herobannerShow && <HeroBanner show={herobannerShow} media_type={randomShow.media_type}/>}
